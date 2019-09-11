@@ -11,3 +11,5 @@ function Task({ name, description, priority, status }) {
     </tr>
   );
 }
+
+export default Task

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactDOMServer from 'react-dom/server';
-
+import Task from './Task'
 // class TaskList extends React.Component {
 //   render() {
 //     return <div className="task-list-container">  Mission success </div>;
@@ -11,15 +11,12 @@ import ReactDOMServer from 'react-dom/server';
 
 function TaskList({ tasks = [] }) {
   var rows = [];
-  console.log(tasks);
-  tasks.forEach(function (task) {
-    console.log(task);
-    rows.push(<tr><td>{ task.name }</td></tr>);
-
-    // console.log(ReactDOMServer.renderToString(rows));
+  tasks.forEach(function(task) {
+    rows.push(<Task name={ task.name } description={ task.description } priority={ task.priority } status={ task.status }/>)
   });
 
-  console.log(rows);
+  // console.log(rows);
+  // console.log(ReactDOMServer.renderToString(rows));
 
   return (
     <React.Fragment>
