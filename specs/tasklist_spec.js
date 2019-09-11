@@ -5,7 +5,7 @@ import ReactDOMServer from 'react-dom/server';
 import { JSDOM } from 'jsdom';
 
 it('outputs a row for each task', () => {
-  const list = ['nigga', 'nighah', 'myniggah', 'niighaa'];
+  const list = ['oops', 'whoops', 'whoopsie', 'whoopsadaisy'];
   var rElTaskList = TaskList({ list });
   var rowCount = countTableRows(rElTaskList);
   expect(rowCount).toBe(4);
