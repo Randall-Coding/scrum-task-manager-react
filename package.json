@@ -1,0 +1,38 @@
+{
+  "name": "task_list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "jest": {
+    "testMatch": [
+      "**/specs/**/*.[jt]s?(x)",
+      "**/?(*.)+(spec|test).[jt]s?(x)"
+    ]
+  },
+  "scripts": {
+    "test": "echo \"Testing to begin\"; jest",
+    "build": "cross-env NODE_ENV=production webpack -p",
+    "start": "cross-env NODE_ENV=development webpack-dev-server -d"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.6",
+    "babel-preset-react-app": "^9.0.1",
+    "cross-env": "^5.2.1",
+    "jest": "^24.9.0",
+    "jsdom": "^15.1.1",
+    "jsx-to-string": "^1.4.0",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.8",
+    "webpack-dev-server": "^3.8.0",
+    "xml2js": "^0.4.22"
+  },
+  "dependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  }
+}
