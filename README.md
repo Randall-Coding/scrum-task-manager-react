@@ -1,5 +1,5 @@
 # SCRUM Task manager
-## React.js project to manage a SCRUM sprint.
+<p style="font-size:1.2em;"> React.js project to manage a SCRUM sprint. <p>
 
 ### Specs
  React 16.9.0, Redux, webpack 4, Jest for component testing, Babel for JSX.
