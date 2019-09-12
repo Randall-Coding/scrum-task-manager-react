@@ -6,11 +6,11 @@ import { JSDOM } from 'jsdom';
 import fourTasks from './factories/tasks_factory'
 
 it('outputs a row for each task', () => {
-  const list = fourTasks()  // Factory
-  var rElTaskList = TaskList({ tasks: list });
+  const taskList = fourTasks()  // Factory
+  var rElTaskList = TaskList({ tasks: taskList });
   var rowCount = countTableRows(rElTaskList);
   expect(rowCount).toBeGreaterThan(0);
-  expect(rowCount).toBe(list.length);
+  expect(rowCount).toBe(taskList.length);
 });
 
 function countTableRows(el) {
