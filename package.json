@@ -5,8 +5,7 @@
   "main": "app.js",
   "jest": {
     "testMatch": [
-      "**/specs/**/*.[jt]s?(x)",
-      "**/?(*.)+(spec|test).[jt]s?(x)"
+      "**/specs/**?(*.)+(spec|test).[jt]s?(x)"
     ]
   },
   "scripts": {

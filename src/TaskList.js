@@ -9,9 +9,6 @@ function TaskList({ tasks = [] }) {
     rows.push(<Task name={ task.name } description={ task.description } priority={ task.priority } status={ task.status }/>)
   });
 
-  // console.log(rows);
-  // console.log(ReactDOMServer.renderToString(rows));
-
   return (
     <React.Fragment>
       <table id='tasklist'>
