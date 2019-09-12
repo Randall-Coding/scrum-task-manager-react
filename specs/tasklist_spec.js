@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactDOMServer from 'react-dom/server';
 import { JSDOM } from 'jsdom';
+import axios from 'axios'
 
 it('outputs a row for each task', () => {
   const list = [
