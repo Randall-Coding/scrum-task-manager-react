@@ -2,12 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactDOMServer from 'react-dom/server';
 import Task from './Task'
-// class TaskList extends React.Component {
-//   render() {
-//     return <div className="task-list-container">  Mission success </div>;
-//   }
-// }
-// const header = {}
 
 function TaskList({ tasks = [] }) {
   var rows = [];
