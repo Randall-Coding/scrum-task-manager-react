@@ -12,19 +12,27 @@ function TaskList({ tasks = [] }) {
 
   var headers = [];
   for (var key in tasks[0]) {
-    headers.push(<th> { key[0].toUpperCase() + key.slice(1) } </th>)   //capitalize
+    headers.push(<th className='cell100'>{ key[0].toUpperCase() + key.slice(1) }</th>)   //capitalize
   }
 
   return (
     <React.Fragment>
-      <table id='tasklist'>
-        <thead>
-          { headers }
-        </thead>
-        <tbody>
-          { rows }
-        </tbody>
-      </table>
+    <div className='table100 ver1 m-b-110'>
+		  <div className='table100-head'>
+        <table id='tasklist-header'>
+          <thead>
+            <tr className='row100 head'>{ headers }</tr>
+          </thead>
+        </table>
+      </div>
+      <div className='table100-body js-pscroll'>
+        <table id='tasklist'>
+          <tbody>
+            { rows }
+          </tbody>
+        </table>
+      </div>
+    </div>
     </React.Fragment>
   );
 }

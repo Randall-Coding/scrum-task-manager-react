@@ -10,7 +10,7 @@ it('outputs a row for each task', () => {
   var rElTaskList = TaskList({ tasks: taskList });
   var rowCount = countTableRows(rElTaskList);
   expect(rowCount).toBeGreaterThan(0);
-  expect(rowCount).toBe(taskList.length);
+  expect(rowCount).toBe(taskList.length + 1);
 });
 
 function countTableRows(el) {
