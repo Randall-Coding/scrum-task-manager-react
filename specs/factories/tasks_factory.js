@@ -4,7 +4,7 @@ function fourTasks() {
       name: 'Header bar needs to fill screen',
       description: 'Header bar is showing some of the background on the left side of the screen.  Needs to fill space',
       priority: 'Medium',
-      status: 'Open',
+      status: 'Closed',
     },
     {
       name: 'Filter calls returning incorrect values for custom date range',
