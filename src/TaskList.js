@@ -7,16 +7,19 @@ function TaskList({ tasks = [] }) {
 
   var rows = [];
   tasks.forEach(function(task) {
-    rows.push(<Task name={ task.name } description={ task.description } priority={ task.priority } status={ task.status }/>)
+    rows.push(<Task name={ task.name } description={ task.description } priority={ task.priority } status={ task.status } taskId = { task.taskId }/>)
   });
 
   var headers = [];
   for (var key in tasks[0]) {
-    headers.push(<th className='cell100'>{ key[0].toUpperCase() + key.slice(1) }</th>)   //capitalize
+    if (key != 'taskId') {
+      headers.push(<th className='cell100'>{ key[0].toUpperCase() + key.slice(1) }</th>)   // Capitalize
+    }
   }
 
   return (
     <React.Fragment>
+    <div> Add task </div>
     <div className='table100 ver1 m-b-110'>
 		  <div className='table100-head'>
         <table id='tasklist-header'>
