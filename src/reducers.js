@@ -1,12 +1,17 @@
 import { combineReducers } from 'redux'
-import { DELETE } from './actions'
-function deleteTask(state = [], action) {
-  if (action.type == DELETE) {
-    return null;
-  }
-  else {
-    return state;
+import { REMOVE, ADD, INIT } from './actions'
+
+function tasks(state = [], action) {
+  switch (action.type) {
+    case REMOVE:
+      return state.filter(function(item) { return item.taskId != action.id });
+    case ADD:
+      return [...state, action.task];
+    case INIT:
+      return action.list;
+    default:
+      return state;
   }
 }
 
-export default combineReducers(deleteTask);
+export default combineReducers({ tasks });
