@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { REMOVE, ADD, INIT } from './actions'
+import { REMOVE, ADD, INIT } from './actionTypes.js'
 
 function tasks(state = [], action) {
   switch (action.type) {

@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactDOMServer from 'react-dom/server';
-import Task from './Task'
+import Task from './Task';
+import { removeTask } from './actions.js';
+import { connect } from 'react-redux';
 
 function TaskList({ tasks = [] }) {
 
   var rows = [];
   tasks.forEach(function(task) {
-    rows.push(<Task name={ task.name } description={ task.description } priority={ task.priority } status={ task.status } taskId = { task.taskId }/>)
+    rows.push(<Task name={ task.name } description={ task.description } priority={ task.priority } status={ task.status } taskId = { task.taskId } removeTask= { removeTask }/>)
   });
 
   var headers = [];
@@ -40,4 +42,11 @@ function TaskList({ tasks = [] }) {
   );
 }
 
-export default TaskList;
+function mapStateToProps(state) {
+  return {tasks: state.tasks}
+}
+
+// export default TaskList;
+
+export {TaskList as TaskListFunction }
+export default connect(mapStateToProps,null)(TaskList)

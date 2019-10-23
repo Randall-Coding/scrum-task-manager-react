@@ -1,3 +1,5 @@
-export const REMOVE = 'REMOVE';
-export const ADD = 'ADD';
-export const INIT = 'INIT';
+import { REMOVE, ADD, INIT } from './actionTypes.js';
+
+export const removeTask = (id) => ({type: REMOVE,id: id});
+export const add = (task) => ({type: ADD, task: task});
+export const init = (list) => ({type: INIT, list: list});

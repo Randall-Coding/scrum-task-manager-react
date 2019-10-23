@@ -4,7 +4,7 @@ import TaskList from './TaskList';
 import Progress from './Progress'
 import axios from 'axios';
 import store from './store'
-import { REMOVE, ADD, INIT } from './actions'
+import { removeTask, add, init } from './actions'
 import { Provider } from 'react-redux'
 
 const sprintName = 'Q5';
@@ -12,7 +12,7 @@ axios.get('tasks.json').then(response => {
   const list = response.data;
   const percentComplete = calculateProgress(list);
 
-  store.dispatch({ type: INIT,list: list})
+  store.dispatch(init(list))
   ReactDOM.render(
     <Provider store={ store }>
       <h1> Sprint: { sprintName } </h1>
@@ -22,7 +22,7 @@ axios.get('tasks.json').then(response => {
     document.getElementById('app')
   );
 
-  store.dispatch({ type: REMOVE, id: 1})
+  store.dispatch(removeTask(1))
 
   const newTask = {
       name: 'New task',
@@ -32,7 +32,7 @@ axios.get('tasks.json').then(response => {
       taskId: 5,
     }
 
-  store.dispatch({ type: ADD, task: newTask});
+  store.dispatch(add(newTask));
 });
 
 function calculateProgress(tasks) {
