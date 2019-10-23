@@ -9,5 +9,6 @@
  $ npm start
 
 ### Getting started
-  Project still under construction and should not be used by anyone
+  Project still under construction 
+  
 ### NOTE project under construction
