@@ -1,21 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactDOMServer from 'react-dom/server';
 import Task from './Task';
 import { removeTask } from './actions.js';
 import { connect } from 'react-redux';
+import { sampleTask } from './samples.js';
 
-function TaskList({ tasks = [] }) {
-
+export function TaskList({ tasks = [] }) {
+  // Make rows
   var rows = [];
   tasks.forEach(function(task) {
-    rows.push(<Task name={ task.name } description={ task.description } priority={ task.priority } status={ task.status } taskId = { task.taskId } removeTask= { removeTask }/>)
+    rows.push(<Task name={ task.name } description={ task.description } priority={ task.priority } status={ task.status } key={ task.taskId } taskId={task.taskId} removeTask= { removeTask }/>)
   });
 
+  // Make headers
   var headers = [];
-  for (var key in tasks[0]) {
-    if (key != 'taskId') {
-      headers.push(<th className='cell100'>{ key[0].toUpperCase() + key.slice(1) }</th>)   // Capitalize
+  for (var key in sampleTask) {
+    if (key != 'taskId' && key != 'key') {
+      headers.push(<th className='cell100' key={ key }>{ key[0].toUpperCase() + key.slice(1) }</th>)   // Capitalize
     }
   }
 
@@ -46,7 +47,4 @@ function mapStateToProps(state) {
   return {tasks: state.tasks}
 }
 
-// export default TaskList;
-
-export {TaskList as TaskListFunction }
 export default connect(mapStateToProps,null)(TaskList)

@@ -1,5 +1,9 @@
-require('./setup_jsdom.js')
-import { TaskListFunction } from '../src/TaskList';
+/**
+ * @jest-environment node
+ */
+require('./setup_jsdom.js');
+import { TaskList } from '../src/TaskList';
+import ConnectedTaskList from '../src/TaskList'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactDOMServer from 'react-dom/server';
@@ -12,46 +16,55 @@ import store from '../src/store';
 import { Provider } from 'react-redux'
 
 
+React.useLayoutEffect = React.useEffect;  // Avoids the useLayoutEffect warnings from Jest
+
+
 describe('A task list with four tasks', () => {
 
   it('outputs a row for each task', () => {
-    const taskList = fourTasks()  // Factory
-    var rElTaskList = <Provider store={ store }> <TaskListFunction tasks= { taskList }/> </Provider> ;
-    var rowCount = countTableRows(rElTaskList);
+    const tasks = fourTasks()  // Factory
+    var elTaskList = <Provider store={ store }> <TaskList tasks= { tasks }/> </Provider> ;
+    var rowCount = countTableRows(elTaskList);
     expect(rowCount).toBeGreaterThan(0);
-    expect(rowCount).toBe(taskList.length + 1);
+    expect(rowCount).toBe(tasks.length + 1);
   });
 
-  it('deletes a row when x button on task is clicked', () => {
-    const tasks = fourTasks()
-    const tasklist = mount(<Provider store={ store }> <TaskList tasks={ tasks } /> </Provider>);
+  it ('deletes a row when x button on task is clicked', () => {
 
+    const tasks = fourTasks()
+    const tasklist = mount(<Provider store={ store }> <TaskList tasks={ tasks } /> </Provider>, { attachTo: document.getElementById('app') });
+    global.jQuery = global.jQuery(global.window);
+
+    // Grab html
     const oldHTML = tasklist.html();
-    console.log("Outputting the oldHTML now...");
-    console.log(oldHTML);
+    // console.log("oldHTML: " + oldHTML);
+    const oldRowCount = countTableRows(oldHTML);
 
     // Click
-    const oldTask = tasklist.find('img.x-icon[data-task-id="1"]')
-    console.log(oldTask.html())
-    oldTask.simulate('click')
-    tasklist.mount()
+    const oldTask = tasklist.find('img.x-icon[data-task-id="1"]');
+    // console.log(oldTask.html());
+    oldTask.simulate('click');
+    tasklist.mount();
 
-    // Expect tr count to be 3
+    // Expect html to have removed a row
     const newHTML = tasklist.html();
-    console.log("newHTML " + newHTML);
-    expect(oldHTML).not.toEqual(newHTML)
+    // console.log("newHTML: " + newHTML);
+    expect(oldHTML).not.toEqual(newHTML);
+    expect(countTableRows(newHTML)).toEqual(oldRowCount - 1);
 
-    //  Expect we cannot find tr with id= 1
+    // Expect to not find tr with id= 1
+    expect(newHTML).not.toContain('data-task-id="1"');
   });
 });
 
-
-
-
-
-
+// Params: el can be ReactElement or HTML string
 function countTableRows(el) {
-  var xml = ReactDOMServer.renderToString(el);
+  if (typeof (el) == 'object') {
+    var xml = ReactDOMServer.renderToString(el);
+  }
+  else {
+    var xml = el
+  }
   var dom = new JSDOM(xml);
   return dom.window.document.getElementsByTagName('tr').length;
 }

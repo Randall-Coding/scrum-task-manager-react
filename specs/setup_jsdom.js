@@ -1,8 +1,9 @@
 /* setup.js */
+import $ from 'jquery';
 
 const { JSDOM } = require('jsdom');
 
-const jsdom = new JSDOM('<!doctype html><html><body></body></html>');
+const jsdom = new JSDOM('<!doctype html><html><body><div id="app"></div></body></html>');
 const { window } = jsdom;
 
 function copyProps(src, target) {
@@ -14,6 +15,9 @@ function copyProps(src, target) {
 
 global.window = window;
 global.document = window.document;
+
+global.jQuery = $(window);
+
 global.navigator = {
   userAgent: 'node.js',
 };

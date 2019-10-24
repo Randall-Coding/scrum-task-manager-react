@@ -6,7 +6,8 @@
   "jest": {
     "testMatch": [
       "**/specs/**?(*.)+(spec|test).[jt]s?(x)"
-    ]
+    ],
+    "setupFiles": ["<rootDir>/test-env.js"]
   },
   "scripts": {
     "test": "echo \"Testing to begin\"; jest",
@@ -32,10 +33,12 @@
   },
   "dependencies": {
     "axios": "^0.19.0",
+    "jquery": "^3.4.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.1",
     "redux": "^4.0.4",
-    "redux-devtools-extension": "^2.13.8"
+    "redux-devtools-extension": "^2.13.8",
+    "webpack-jquery-ui": "^2.0.1"
   }
 }

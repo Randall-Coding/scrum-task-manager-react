@@ -1,4 +1,4 @@
-function fourTasks() {
+ function fourTasks() {
   return [
     {
       name: 'Header bar needs to fill screen',
@@ -6,6 +6,7 @@ function fourTasks() {
       priority: 'Medium',
       status: 'Closed',
       taskId: '1',
+      key: '1',
     },
     {
       name: 'Filter calls returning incorrect values for custom date range',
@@ -13,6 +14,7 @@ function fourTasks() {
       priority: 'Medium',
       status: 'Open',
       taskId: '2',
+      key: '2',
     },
     {
       name: 'Add organize by column feature for list',
@@ -20,6 +22,7 @@ function fourTasks() {
       priority: 'High',
       status: 'Open',
       taskId: '3',
+      key: '3',
     },
     {
       name: 'Add delete button feature to task list',
@@ -27,6 +30,7 @@ function fourTasks() {
       priority: 'High',
       status: 'In Progress',
       taskId: '4',
+      key: '4',
     },];
 }
 
