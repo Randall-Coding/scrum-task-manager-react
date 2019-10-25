@@ -1,6 +1,7 @@
 /**
  * @jest-environment node
  */
+
 require('./setup_jsdom.js');
 import { TaskList } from '../src/TaskList';
 import ConnectedTaskList from '../src/TaskList'
@@ -14,10 +15,7 @@ import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
 import store from '../src/store';
 import { Provider } from 'react-redux'
-
-
-React.useLayoutEffect = React.useEffect;  // Avoids the useLayoutEffect warnings from Jest
-
+React.useLayoutEffect = React.useEffect;  // To avoid the useLayoutEffect warnings from Jest
 
 describe('A task list with four tasks', () => {
 
@@ -31,33 +29,33 @@ describe('A task list with four tasks', () => {
 
   it ('deletes a row when x button on task is clicked', () => {
 
+    // Mount TaskList
     const tasks = fourTasks()
     const tasklist = mount(<Provider store={ store }> <TaskList tasks={ tasks } /> </Provider>, { attachTo: document.getElementById('app') });
-    global.jQuery = global.jQuery(global.window);
-
-    // Grab html
     const oldHTML = tasklist.html();
-    // console.log("oldHTML: " + oldHTML);
+      // console.log("oldHTML: " + oldHTML);
+
+    // Count rows
     const oldRowCount = countTableRows(oldHTML);
 
     // Click
     const oldTask = tasklist.find('img.x-icon[data-task-id="1"]');
-    // console.log(oldTask.html());
+      // console.log(oldTask.html());
     oldTask.simulate('click');
     tasklist.mount();
 
     // Expect html to have removed a row
     const newHTML = tasklist.html();
-    // console.log("newHTML: " + newHTML);
+      // console.log("newHTML: " + newHTML);
     expect(oldHTML).not.toEqual(newHTML);
     expect(countTableRows(newHTML)).toEqual(oldRowCount - 1);
 
-    // Expect to not find tr with id= 1
+    // Expect to not find tr with id="1"
     expect(newHTML).not.toContain('data-task-id="1"');
   });
 });
 
-// Params: el can be ReactElement or HTML string
+// Function params: el can be ReactElement or HTML string
 function countTableRows(el) {
   if (typeof (el) == 'object') {
     var xml = ReactDOMServer.renderToString(el);

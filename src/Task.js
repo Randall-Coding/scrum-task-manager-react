@@ -17,10 +17,8 @@ function Task({ name, description, priority, status, key,taskId, removeTask }) {
 }
 
 function animatedRemove(taskId, removeTask) {
-  // var tr = jQuery('tr[data-task-id="' + taskId + '"]');
-  // tr.remove();
-  var tr = document.querySelector('tr[data-task-id="' + taskId + '"]');
-  tr.remove();
+  // var tr = document.querySelector('tr[data-task-id="' + taskId + '"]');
+  //tr.remove();
   return removeTask(taskId);
 }
 

@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TaskList from './TaskList';
-import Progress from './Progress'
+import Progress from './Progress';
+import TaskMenu from './TaskMenu';
 import axios from 'axios';
-import store from './store'
-import { removeTask, add, init } from './actions'
-import { Provider } from 'react-redux'
+import store from './store';
+import { removeTask, addTask, init } from './actions';
+import { Provider } from 'react-redux';
 
 const sprintName = 'Q5';
 axios.get('tasks.json').then(response => {
@@ -17,6 +18,7 @@ axios.get('tasks.json').then(response => {
     <Provider store={ store }>
       <h1> Sprint: { sprintName } </h1>
       <Progress percentComplete={ percentComplete }/>
+      <TaskMenu> </TaskMenu>
       <TaskList tasks={ list }/>
     </Provider>,
     document.getElementById('app')
@@ -32,7 +34,7 @@ axios.get('tasks.json').then(response => {
       taskId: 5,
     }
 
-  store.dispatch(add(newTask));
+  store.dispatch(addTask(newTask));
 });
 
 function calculateProgress(tasks) {

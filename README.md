@@ -8,7 +8,10 @@
  $ npm install </br>
  $ npm start
 
+### How to run tests
+ $ npm test
+ 
 ### Getting started
-  Project still under construction 
-  
+  Project still under construction
+
 ### NOTE project under construction

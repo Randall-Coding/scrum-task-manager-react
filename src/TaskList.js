@@ -22,7 +22,6 @@ export function TaskList({ tasks = [] }) {
 
   return (
     <React.Fragment>
-    <div> Add task </div>
     <div className='table100 ver1 m-b-110'>
 		  <div className='table100-head'>
         <table id='tasklist-header'>
