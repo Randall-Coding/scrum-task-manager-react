@@ -12,6 +12,6 @@
  $ npm test
  
 ### Getting started
-  Project still under construction
-
-### NOTE project under construction
+  Enter new task into the input fields and press "add task" to see the task added to the ReactROM and rendered.  Click the red x to remove a task from the list.  
+  
+![ui image](https://raw.githubusercontent.com/Randall-Coding/misc/master/react_task_UI.png)
