@@ -9,7 +9,8 @@ import { removeTask, addTask, init } from './actions';
 import { Provider } from 'react-redux';
 
 const sprintName = 'Q5';
-axios.get('tasks.json').then(response => {
+
+axios.get('/tasks.json').then(response => {
   const list = response.data;
   const percentComplete = calculateProgress(list);
   global.currentTaskId = list[list.length - 1].taskId

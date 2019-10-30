@@ -16,9 +16,10 @@ export function TaskList({ tasks = [] }) {
   var headers = [];
   for (var key in sampleTask) {
     if (key != 'taskId' && key != 'key') {
-      headers.push(<th className='cell100' key={ key }>{ key[0].toUpperCase() + key.slice(1) }</th>)   // Capitalize
+      headers.push(<th className='cell100' key={ key } className={ key }> { key[0].toUpperCase() + key.slice(1) }</th>)   // Capitalize
     }
   }
+  headers.push(<th className='cell100' key='spacer' className='cancel'> </th>)
 
   return (
     <React.Fragment>
