@@ -12,13 +12,14 @@ const sprintName = 'Q5';
 axios.get('tasks.json').then(response => {
   const list = response.data;
   const percentComplete = calculateProgress(list);
+  global.currentTaskId = list[list.length - 1].taskId
 
   store.dispatch(init(list))
   ReactDOM.render(
     <Provider store={ store }>
       <h1> Sprint: { sprintName } </h1>
       <Progress percentComplete={ percentComplete }/>
-      <TaskMenu> </TaskMenu>
+      <TaskMenu addTask = { addTask }> </TaskMenu>
       <TaskList tasks={ list }/>
     </Provider>,
     document.getElementById('app')

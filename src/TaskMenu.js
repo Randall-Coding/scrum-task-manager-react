@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import AddButton from './AddButton';
+import { connect } from 'react-redux'
 import stores from './store.js';
 import { addTask } from './actions.js';
 
-export function TaskMenu() {
+export function TaskMenu({ addTask: addTask }) {
   return (
       <div id='taskmenu'>
         <div style={{display: 'table-row'}}>
@@ -23,10 +24,25 @@ export function TaskMenu() {
               <option value='Low'> Low </option>
             </select>
           </div>
-          <div className='header'> <AddButton addTask = { addTask } > </AddButton> </div>
+          <div className='header'> <button onClick = {() => animateAddTask(addTask)} id="add-button"  className='add'> Add task  </button> </div>
         </div>
       </div>
     );
 }
 
-export default TaskMenu;
+function animateAddTask(addTask) {
+  var name = document.querySelector('#taskmenu input[name="name"]').value
+  var description = document.querySelector('#taskmenu input[name="description"]').value
+  var priority = document.querySelector('#taskmenu select[name="priority"]').value
+  var task =   {
+      name: name,
+      description: description,
+      priority: priority,
+      status: 'Open',
+      taskId: null,
+      key: null,
+    }
+  addTask(task)
+}
+
+export default connect(null, { addTask })(TaskMenu);
