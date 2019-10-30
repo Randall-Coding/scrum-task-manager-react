@@ -9,6 +9,10 @@ export function TaskMenu({ addTask: addTask }) {
   return (
       <div id='taskmenu'>
         <div style={{display: 'table-row'}}>
+        <span className=""></span>
+        <span className="header title"> Add a new task </span>
+        </div>
+        <div style={{display: 'table-row'}}>
             <span className='header'> Task Name </span>
             <span style={{width: '40%'}} className='header'> Description </span>
             <span htmlFor='priority' placeholder='Priority' className='header'> Priority </span>
